@@ -1,7 +1,6 @@
 "use client";
 
 import { Carousel } from "@mantine/carousel";
-import Image from "next/image";
 
 interface Props {
   images: string[];

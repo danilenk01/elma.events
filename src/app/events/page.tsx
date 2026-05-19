@@ -3,11 +3,9 @@
 import { events } from "@/data/events";
 import EventCarousel from "@/components/EventCarousel";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 export default function EventsPage() {
-  const searchParams = useSearchParams();
-  const slug = searchParams.get("slug");
+  const slug = "slug";
   const event = slug ? events.find((e) => e.slug === slug) : null;
 
   if (slug && !event) {
