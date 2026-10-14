@@ -1,15 +1,19 @@
-"use client";
-
 import { events } from "@/data/events";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function EventDetailPage({
+// Pre-render every event so the page works with the static export used for GitHub Pages
+export function generateStaticParams() {
+  return events.map((e) => ({ id: String(e.id) }));
+}
+
+export default async function EventDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const event = events.find((e) => e.id === parseInt(params.id));
+  const { id } = await params;
+  const event = events.find((e) => e.id === parseInt(id));
 
   if (!event) {
     notFound();
