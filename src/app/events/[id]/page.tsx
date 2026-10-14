@@ -1,7 +1,6 @@
 "use client";
 
 import { events } from "@/data/events";
-import EventCarousel from "@/components/EventCarousel";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -22,7 +21,7 @@ export default function EventDetailPage({
         {/* Back button */}
         <Link
           href="/events"
-          className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6 transition-colors"
+          className="inline-flex items-center text-elma-pink hover:text-elma-pink-light mb-6 transition-colors"
         >
           <svg
             className="w-4 h-4 mr-2"
@@ -40,28 +39,23 @@ export default function EventDetailPage({
           Back to Events
         </Link>
 
-        {/* Carousel */}
-        <div className="mb-8">
-          <EventCarousel images={event.images} />
-        </div>
-
         {/* Event Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-sm bg-purple-100 text-purple-700 px-4 py-1 rounded-full font-medium">
+            <span className="text-sm border border-elma-pink/50 bg-elma-pink/10 text-elma-pink-light px-4 py-1 rounded-full font-medium">
               {event.type}
             </span>
-            <span className="text-sm text-gray-500">📅 {event.date}</span>
+            <span className="text-sm text-silver-400">📅 {event.date}</span>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-silver-100 mb-4">
             {event.title}
           </h1>
-          <p className="text-lg text-gray-600">{event.shortDescription}</p>
+          <p className="text-lg text-silver-300">{event.shortDescription}</p>
         </div>
 
         {/* Full Description */}
         <div className="prose prose-lg max-w-none mb-8">
-          <div className="bg-gray-50 rounded-lg p-8 text-gray-700 whitespace-pre-wrap leading-relaxed">
+          <div className="bg-navy-800/60 border border-silver-400/20 rounded-lg p-8 text-silver-200 whitespace-pre-wrap leading-relaxed">
             {event.fullDescription}
           </div>
         </div>
@@ -69,16 +63,16 @@ export default function EventDetailPage({
         {/* Details */}
         {event.details && event.details.length > 0 && (
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-bold text-silver-100 mb-4">
               Event Highlights
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {event.details.map((detail, index) => (
                 <div
                   key={index}
-                  className="bg-purple-50 rounded-lg p-4 border border-purple-200"
+                  className="bg-navy-800/60 rounded-lg p-4 border border-silver-400/30"
                 >
-                  <p className="text-gray-700">{detail}</p>
+                  <p className="text-silver-200">{detail}</p>
                 </div>
               ))}
             </div>
