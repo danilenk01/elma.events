@@ -1,21 +1,62 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  box-sizing: border-box;
+/* Palette taken from the Elma Events logo: deep night navy + silver */
+@theme {
+  --color-navy-950: #0a1022;
+  --color-navy-900: #111936;
+  --color-navy-800: #182348;
+  --color-navy-700: #22305e;
+  --color-navy-dark: #0a1022;
+  --color-navy: #111936;
+
+  --color-silver-100: #f2f2f2;
+  --color-silver-200: #e0e0e0;
+  --color-silver-300: #c8c9cc;
+  --color-silver-400: #a3a7b3;
+
+  --color-cream: #f4f1ea;
+
+  --color-elma-pink: #e96ba6;
+  --color-elma-pink-light: #f9d5e5;
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
 }
 
 body {
   font-family: "Inter", sans-serif;
+  color: var(--color-silver-200);
+  background-color: var(--color-navy-900);
+  /* Scattered stars like on the logo */
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 72%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 44% 34%, #e6e6e6 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 88%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 78% 22%, #e6e6e6 50%, transparent 51%),
+    radial-gradient(1px 1px at 91% 61%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 52%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 55% 8%, #fff 50%, transparent 51%),
+    radial-gradient(ellipse at top, var(--color-navy-800), var(--color-navy-950));
+  background-size:
+    320px 320px, 380px 380px, 450px 450px, 300px 300px, 420px 420px,
+    360px 360px, 500px 500px, 340px 340px, 100% 100%;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Playfair Display", serif;
+/* In the base layer so Tailwind utilities (e.g. text-navy-900) can override */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--color-silver-100);
+    letter-spacing: 0.02em;
+  }
 }

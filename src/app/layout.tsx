@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@mantine/core/styles.css";
-import "@mantine/carousel/styles.css";
 import Navbar from "@/components/Navbar";
-import { MantineProvider } from "@mantine/core";
+import {
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
+} from "@mantine/core";
+import { theme } from "@/theme";
 
 export const metadata: Metadata = {
   title: "Elma🪐Events",
@@ -16,10 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk">
+    <html lang="uk" {...mantineHtmlProps}>
+      <head>
+        <ColorSchemeScript defaultColorScheme="dark" />
+      </head>
       <body>
-        <MantineProvider>
-          <Navbar />
+        <MantineProvider theme={theme} defaultColorScheme="dark">
+          {/* <Navbar /> */}
           <main className="pt-16">{children}</main>
         </MantineProvider>
       </body>
